@@ -1,5 +1,5 @@
 class PurchaseBatchesController < ApplicationController
-  before_action :set_purchase_batch, only: [:show, :update, :destroy]
+  before_action :set_purchase_batch, only: [:show, :destroy]
 
   # GET /purchase_batches
   # GET /purchase_batches.json
@@ -18,26 +18,11 @@ class PurchaseBatchesController < ApplicationController
   end
 
   # POST /purchase_batches
-  # POST /purchase_batches.json
   def create
     file = params[:purchase_batch][:file]
     @purchase_batch = PurchaseBatch.create_from_file(file.tempfile)
     notice = @purchase_batch.import_errors.present? ? @purchase_batch.import_errors : 'Purchase batch was successfully created.'
     redirect_to @purchase_batch, notice: notice
-  end
-
-  # PATCH/PUT /purchase_batches/1
-  # PATCH/PUT /purchase_batches/1.json
-  def update
-    respond_to do |format|
-      if @purchase_batch.update(purchase_batch_params)
-        format.html { redirect_to @purchase_batch, notice: 'Purchase batch was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @purchase_batch.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /purchase_batches/1

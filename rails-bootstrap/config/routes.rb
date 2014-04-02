@@ -3,15 +3,11 @@ RailsBootstrap::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  resources :users
-
-  resources :purchase_batches, except: :edit
+  resources :purchase_batches, except: [:edit, :update]
 
   resources :purchases
-
   resources :purchasers
-
   resources :merchants
-
   resources :products
+  resources :users
 end
