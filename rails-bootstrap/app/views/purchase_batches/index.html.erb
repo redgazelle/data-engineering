@@ -1,0 +1,25 @@
+<h1>Listing purchase_batches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchase_batches.each do |purchase_batch| %>
+      <tr>
+        <td><%= link_to 'Show', purchase_batch %></td>
+        <td><%= link_to 'Edit', edit_purchase_batch_path(purchase_batch) %></td>
+        <td><%= link_to 'Destroy', purchase_batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Purchase batch', new_purchase_batch_path %>

@@ -1,0 +1,16 @@
+INSTALL NOTES:
+
+1. Create Database
+
+rake db:create
+rake db:migrate
+
+2. Start Server
+
+bundle exec rails s
+
+3. Create user account and login
+
+4. To upload tab delimited file, click 'Upload File' in the Menu at the top of the page
+
+5. There are two sample files in the public directory that you can use: valid_upload_form.csv and invalid_upload_form.csv

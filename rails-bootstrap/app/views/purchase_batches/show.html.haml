@@ -1,0 +1,10 @@
+.state
+  Status:
+  = @purchase_batch.state
+
+- if @purchase_batch.complete?
+  .gross_revenue
+    Gross Revenue:
+    = number_to_currency @purchase_batch.gross_revenue
+%br
+= link_to 'New Purchase Batch', new_purchase_batch_path

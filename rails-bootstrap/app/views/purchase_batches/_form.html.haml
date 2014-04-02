@@ -1,0 +1,22 @@
+%h2 Upload File
+= simple_form_for(@purchase_batch, :html => {:class => 'form-vertical' }, multipart: true) do |f|
+
+  - if @purchase_batch.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@purchase_batch.errors.count, "error")} prohibited this purchase_batch from being saved:"
+      %ul
+      - @purchase_batch.errors.full_messages.each do |msg|
+        %li= msg
+
+  .form-group
+    = f.file_field :file
+    .help-block='There is an example file in the public directory called valid_upload_file.cvs'
+  .form-group
+    = f.button :submit, 'Upload', disabled: 'disabled', class: 'btn-primary', id: 'submit_button'
+
+:javascript
+  $(document).ready(function() {
+    $('#purchase_batch_file').on('change',function() {
+        $('#submit_button').prop('disabled',false);
+    });
+  });
